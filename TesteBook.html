@@ -19,10 +19,10 @@
         - Script to import books as .book  -->
     <script>
         $(function () {
-            //$(".book").load("/FrankHTML.html"); // Frankenstein
-            //$(".book").load("/KafkaHTML.html"); // Metamorphasis  
-            $(".book").load("/DorianHTML.html"); // A Picture of Dorian Gray
-            //$(".book").load("/BorderHTML.html"); // Borderland
+            // $(".book").load("/FrankHTML.html"); // Frankenstein
+            // $(".book").load("/KafkaHTML.html"); // Metamorphasis  
+            // $(".book").load("/DorianHTML.html"); // A Picture of Dorian Gray
+             $(".book").load("/BorderHTML.html"); // Borderland
         });
     </script>
 
@@ -37,26 +37,29 @@
             var lineHeight = 20; // Height of each line in pixels
             var animationDuration = 800; // Duration of the animation in milliseconds (for small movements)
 
-            // Listen for Magic Leap controller swipes
-            MLControls.onSwipe(function (swipeDirection) {
-                if (swipeDirection === 'up') {
+            $(document).on('keydown', function (event) {
+                if (event.key === 'ArrowUp') {
                     var currentPosition = $('.book').scrollTop();
                     var newPosition = Math.max(currentPosition - smallScrollAmount * lineHeight, 0); // Restrict scrolling above the top of the page
                     $('.book').scrollTop(newPosition);
-                } else if (swipeDirection === 'down') {
+                    event.preventDefault();
+                } else if (event.key === 'ArrowDown') {
                     var currentPosition = $('.book').scrollTop();
                     var maxScroll = $('.book')[0].scrollHeight - $('.book').height();
                     var newPosition = Math.min(currentPosition + smallScrollAmount * lineHeight, maxScroll); // Restrict scrolling below the top of the page
                     $('.book').scrollTop(newPosition);
-                } else if (swipeDirection === 'left') {
+                    event.preventDefault();
+                } else if (event.key === 'ArrowLeft') {
                     var currentPosition = $('.book').scrollTop();
                     var newPosition = currentPosition - $('.book').height() + bigScrollAmount * lineHeight;
                     $('.book').animate({ scrollTop: newPosition }, animationDuration); // smooth scroll for big moves
-                } else if (swipeDirection === 'right') {
+                    event.preventDefault();
+                } else if (event.key === 'ArrowRight') {
                     var currentPosition = $('.book').scrollTop();
                     var maxScroll = $('.book')[0].scrollHeight - $('.book').height();
                     var newPosition = Math.min(currentPosition + $('.book').height() - bigScrollAmount * lineHeight, maxScroll);
                     $('.book').animate({ scrollTop: newPosition }, animationDuration);
+                    event.preventDefault();
                 }
 
                 var totalHeight = $('.book')[0].scrollHeight - $('.book').height();
@@ -104,8 +107,7 @@
 
         .chapter p {
             line-height: 1em;
-            margin-bottom: 1em;
-            /* between paragraphs */
+            margin-bottom: 1em; /* between paragraphs */
         }
     }
 
@@ -131,7 +133,6 @@
         </div>
         <div class="status">
             <h3>Complete: <span id="disp">0.00</span>%</h3>
-            <a-entity magicleap-controls></a-entity>
         </div>
     </a-scene>
 
