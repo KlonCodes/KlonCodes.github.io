@@ -8,12 +8,16 @@
 -->
 
 <head>
+
+    <meta name="viewport" content="transparent-background">
+
     <!--  Imports:
-        - aFrame for AR
+        - aFrame for AR??
         - jQuery for ebook managment and animations -->
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/magicleap-controls"></script>
+    <script src="https://supereggbert.github.io/aframe-htmlembed-component/dist/build.js"></script>
 
     <!--  Books:
         - Script to import books as .book  -->
@@ -30,47 +34,59 @@
         - Scolling on keypress
         - Will add MAGICLEAP controller swipes  -->
     <script>
+$(document).ready(function () {
+            var smallScrollAmount = 1;      // Number of lines to scroll for small movements
+            var bigScrollAmount = 4;       // Number of lines to scroll for big jumps
+            var lineHeight = 24;            // Height of each line in pixels
+            var animationDuration = 800;    // Duration of the animation in milliseconds (for small movements)
 
-        $(document).ready(function () {
-            var smallScrollAmount = 1; // Number of lines to scroll for small movements
-            var bigScrollAmount = 3; // Number of lines to scroll for big jumps
-            var lineHeight = 20; // Height of each line in pixels
-            var animationDuration = 800; // Duration of the animation in milliseconds (for small movements)
+            $(document).on('keydown', function (event) {
 
-            // Listen for Magic Leap controller swipes
-            MLControls.onSwipe(function (swipeDirection) {
-                if (swipeDirection === 'up') {
+                // Small scroll backward
+                if (event.key === 'ArrowUp') {
                     var currentPosition = $('.book').scrollTop();
-                    var newPosition = Math.max(currentPosition - smallScrollAmount * lineHeight, 0); // Restrict scrolling above the top of the page
+                    var newPosition = currentPosition - smallScrollAmount * lineHeight;
                     $('.book').scrollTop(newPosition);
-                } else if (swipeDirection === 'down') {
+                    event.preventDefault();
+
+                    // Small scroll foreward
+                } else if (event.key === 'ArrowDown') {
                     var currentPosition = $('.book').scrollTop();
-                    var maxScroll = $('.book')[0].scrollHeight - $('.book').height();
-                    var newPosition = Math.min(currentPosition + smallScrollAmount * lineHeight, maxScroll); // Restrict scrolling below the top of the page
+                    var newPosition = currentPosition + smallScrollAmount * lineHeight;
                     $('.book').scrollTop(newPosition);
-                } else if (swipeDirection === 'left') {
+                    event.preventDefault();
+
+                    // Big scroll backward
+                } else if (event.key === 'ArrowLeft') {
                     var currentPosition = $('.book').scrollTop();
                     var newPosition = currentPosition - $('.book').height() + bigScrollAmount * lineHeight;
                     $('.book').animate({ scrollTop: newPosition }, animationDuration); // smooth scroll for big moves
-                } else if (swipeDirection === 'right') {
+                    event.preventDefault();
+
+                    // Big Scroll foreward 
+                } else if (event.key === 'ArrowRight') {
                     var currentPosition = $('.book').scrollTop();
-                    var maxScroll = $('.book')[0].scrollHeight - $('.book').height();
-                    var newPosition = Math.min(currentPosition + $('.book').height() - bigScrollAmount * lineHeight, maxScroll);
+                    var newPosition = currentPosition + $('.book').height() - bigScrollAmount * lineHeight;
                     $('.book').animate({ scrollTop: newPosition }, animationDuration);
+                    event.preventDefault();
                 }
 
+                // Scroll Percentage Calculator (for display?)
                 var totalHeight = $('.book')[0].scrollHeight - $('.book').height();
                 var scrollPercentage = (newPosition / totalHeight) * 100;
-                var perc = Math.max(0.00, scrollPercentage).toFixed(2);
+                var perc = ('Scroll Percentage:', Math.max(0.00, scrollPercentage).toFixed(2));
                 document.getElementById('disp').innerHTML = perc;
+
             });
         });
-
     </script>
 </head>
 
 <style>
     /* @import url('https://fonts.googleapis.com/css2?family=Bacasime+Antique&display=swap'); */
+    body {
+        background-color: rgba(0, 0, 0, 0);
+    }
 
     #Window {
         /* AFrame Scene */
@@ -125,16 +141,12 @@
 </head>
 
 <body>
-    
-    <a-scene id="Window">
-        <a-plane color="white" width="10" height="10" id="Canvas">
+    <div id="Window">
+        <div id="Canvas">
             <div class="book"></div>
-        </a-plane>
+        </div>
         <div class="status">
             <h3>Complete: <span id="disp">0.00</span>%</h3>
-            <a-entity magicleap-controls></a-entity>
         </div>
-        <a-camera position="0 1.6 0"></a-camera>
-    </a-scene>
-
+    </div>
 </body>
