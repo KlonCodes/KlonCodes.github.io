@@ -1,0 +1,15 @@
+{
+    "background_color": "blacK",
+    "description": "AR Book Reader",
+    "display": "fullscreen",
+    "icons": [
+      {
+        "src": "/BookIco.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ],
+    "name": "AReader: AR Book Reader",
+    "short_name": "AReader",
+    "start_url": "/index.html"
+  }

@@ -10,14 +10,12 @@
 <head>
 
     <meta name="viewport" content="transparent-background">
-
+    <link rel="manifest" href="/manifest.json">
     <!--  Imports:
         - aFrame for AR??
         - jQuery for ebook managment and animations -->
-    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/magicleap-controls"></script>
-    <script src="https://supereggbert.github.io/aframe-htmlembed-component/dist/build.js"></script>
 
     <!--  Books:
         - Script to import books as .book  -->
@@ -85,14 +83,15 @@ $(document).ready(function () {
 <style>
     /* @import url('https://fonts.googleapis.com/css2?family=Bacasime+Antique&display=swap'); */
     body {
-        background-color: rgba(0, 0, 0, 0);
+        background-color: rgba(0, 0, 0, 100);
     }
 
     #Window {
-        /* AFrame Scene */
+        /* window */
         height: 100%;
         display: flex;
         overflow: hidden;
+        background-color: rgba(0, 0, 0, 150);
     }
 
     #Canvas {
@@ -104,7 +103,7 @@ $(document).ready(function () {
         left: 50%;
         -webkit-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
-        background-color: blanchedalmond;
+        background-color:aliceblue;
         display: flex;
         overflow: auto;
     }
@@ -136,6 +135,7 @@ $(document).ready(function () {
         bottom: -10px;
         transform: translate(-50%, -50%);
         margin: 0 auto;
+        color: white;
     }
 </style>
 </head>
