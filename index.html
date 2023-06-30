@@ -127,13 +127,14 @@
 <body>
     
     <a-scene id="Window">
-        <a-plane id="Canvas">
+        <a-plane color="white" width="10" height="10" id="Canvas">
             <div class="book"></div>
         </a-plane>
         <div class="status">
             <h3>Complete: <span id="disp">0.00</span>%</h3>
             <a-entity magicleap-controls></a-entity>
         </div>
+        <a-camera position="0 1.6 0"></a-camera>
     </a-scene>
 
 </body>
