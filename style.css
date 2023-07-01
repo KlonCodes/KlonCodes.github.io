@@ -87,11 +87,11 @@ body {
 .book-option {
     margin: 10px;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: transform 0.4s ease;
 }
 
 /* Ensure book options wrap into 2x2 when screen size is smaller */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     .ssOptions {
         flex-direction: row;
         justify-content: flex-start;
@@ -100,7 +100,7 @@ body {
 
     .book-option {
         flex: 0 0 50%;
-        margin: 10px;
+        margin: 00px;
     }
 }
 
@@ -111,7 +111,7 @@ body {
 
 /* Adjust image size within the book options */
 .book-option img {
-    max-width: 200px;
+    max-width: 22em;
     height: auto;
-    border-radius: 10px;
+    border-radius: 0px;
 }
