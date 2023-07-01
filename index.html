@@ -8,7 +8,6 @@
 -->
 
 <head>
-
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/magicleap-controls"></script>
 
@@ -19,25 +18,58 @@
 
     <script src="animations.js" type="text/javascript"></script>
 
-
     <!--  Books: Script to import books as .book  -->
     <script>
+        // Function to load selected book
+        function loadBook(bookURL) {
+            $(".book").load(bookURL);
+            // Hide the splash screen after loading the book
+            $(".splash-screen").hide();
+            $("#Window").show();
+            $("#Canvas").show();
+            $(".book").show();
+        }
+
+        // Wait for the page to load before showing the splash screen
         $(function () {
-            $(".book").load("/FrankHTML.html"); // Frankenstein
-            //$(".book").load("/KafkaHTML.html"); // Metamorphasis  
-            //$(".book").load("/DorianHTML.html"); // A Picture of Dorian Gray
-            //$(".book").load("/BorderHTML.html"); // Borderland
+            // Show the splash screen initially
+            $("#Window").hide();
+            $("#Canvas").hide();
+            $(".book").hide();
+            $(".splash-screen").show();
+
+            // Handle book selection when a user clicks on an option
+            $(".book-option").click(function () {
+                const bookURL = $(this).data("book-url");
+                if (bookURL) {
+                    loadBook(bookURL);
+                }
+            });
         });
     </script>
 </head>
 
-</head>
-
 <body>
+    <!-- Splash screen -->
+    <div class="splash-screen">
+        <div class="ssTitle">
+            <h1>AReader Library</h1>
+            <br><br><br><br>
+        </div>
+        <div class="ssOptions">
+            <div class="book-option" data-book-url="/FrankHTML.html"><img src="/Covers/CoverFrank.png" alt="Frankenstein"></div>
+            <div class="book-option" data-book-url="/KafkaHTML.html"><img src="/Covers/KafkaCover.png" alt="The Metamorphosis"></div>
+            <div class="book-option" data-book-url="/DorianHTML.html"><img src="/Covers/CoverDorian.png" alt="A Portrait of Dorian Gray"></div>
+            <div class="book-option" data-book-url="/BorderHTML.html"><img src="/Covers/CoverBorder.png" alt="The House on the Borderland"></div>
+        </div>
+    </div>
+
+    <!-- The main book container -->
     <div id="Window">
         <div id="Canvas">
-            <div class="book">
-            </div>
+            <div class="book"></div>
         </div>
     </div>
 </body>
+
+</html>

@@ -13,7 +13,7 @@ $(document).ready(function () {
     const scrollElement = $('.book');
 
     // Add the event listener for the 'wheel' event
-    scrollElement.on('wheel', function(event) {
+    scrollElement.on('wheel', function (event) {
         var currentTime = new Date().getTime();
 
         // Check if the user is trying to scroll horizontally
@@ -50,26 +50,35 @@ $(document).ready(function () {
             $('.book').scrollTop(newPosition);
             event.preventDefault();
 
-        // Small scroll forward
+            // Small scroll forward
         } else if (event.key === 'ArrowDown') {
             var currentPosition = $('.book').scrollTop();
             var newPosition = currentPosition + smallScrollAmount * lineHeight;
             $('.book').scrollTop(newPosition);
             event.preventDefault();
 
-        // Big scroll backward
+            // Big scroll backward
         } else if (event.key === 'ArrowLeft') {
             var currentPosition = $('.book').scrollTop();
             var newPosition = currentPosition - $('.book').height() + bigScrollAmount * lineHeight;
             $('.book').animate({ scrollTop: newPosition }, animationDuration); // smooth scroll for big moves
             event.preventDefault();
 
-        // Big Scroll forward
+            // Big Scroll forward
         } else if (event.key === 'ArrowRight') {
             var currentPosition = $('.book').scrollTop();
             var newPosition = currentPosition + $('.book').height() - bigScrollAmount * lineHeight;
             $('.book').animate({ scrollTop: newPosition }, animationDuration);
             event.preventDefault();
+        }
+    });
+
+    // Add double-click event listener for jumping to the next chapter
+    $('.book').on('dblclick', function (event) {
+        var nextChapter = $('.chapter').first().next('.chapter');
+        if (nextChapter.length > 0) {
+            var position = nextChapter.position().top;
+            $('.book').animate({ scrollTop: position }, animationDuration);
         }
     });
 });

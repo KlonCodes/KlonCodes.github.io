@@ -1,4 +1,5 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Bacasime+Antique&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
+
 body {
     background-color: rgba(0, 0, 0, 100);
 }
@@ -53,4 +54,38 @@ body {
     transform: translate(-50%, -50%);
     margin: 0 auto;
     color: white;
+}
+
+.splash-screen {
+    background-color: rgba(0, 0, 0, 150);
+    color: aliceblue;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    display: flex;
+    overflow: auto;
+
+    .ssTitle {
+        width:100%;
+        h1 {
+        font-family: 'Pirata One', cursive;
+    }}
+}
+
+.ssOptions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .book-option img {
+        max-width: 100%;
+    }
 }
