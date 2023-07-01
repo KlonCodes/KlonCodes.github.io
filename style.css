@@ -59,33 +59,59 @@ body {
 .splash-screen {
     background-color: rgba(0, 0, 0, 150);
     color: aliceblue;
-    padding: 20px;
-    text-align: center;
     display: flex;
     flex-direction: column;
-    width: 80%;
-    height: 80%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    display: flex;
-    overflow: auto;
-
-    .ssTitle {
-        width:100%;
-        h1 {
-        font-family: 'Pirata One', cursive;
-    }}
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
+/* Style for the title "AReader Library" */
+.ssTitle {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    font-family: 'Pirata One', cursive;
+}
+
+/* Style for the book options */
 .ssOptions {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
+}
 
-    .book-option img {
-        max-width: 100%;
+/* Style for individual book options */
+.book-option {
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+/* Ensure book options wrap into 2x2 when screen size is smaller */
+@media (max-width: 768px) {
+    .ssOptions {
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
     }
+
+    .book-option {
+        flex: 0 0 50%;
+        margin: 10px;
+    }
+}
+
+/* Hover effect on book options with glow */
+.book-option:hover {
+    transform: scale(1.1);
+}
+
+/* Adjust image size within the book options */
+.book-option img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 10px;
 }
