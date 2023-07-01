@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Input Dectective</title>
+  <style>
+    /* Additional styles for demonstration purposes */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    #content {
+      width: 1000px; /* Width to enable horizontal scrolling */
+      height: 3000px; /* Height to enable vertical scrolling */
+    }
+  </style>
+</head>
+<body>
+  <h1>All Input Events Display</h1>
+  <p>Interact with the page and see the captured input events below:</p>
+  <p id="eventLog"></p>
+
+  <div id="content">
+    <!-- Add enough content here to exceed the viewport size -->
+  </div>
+
+  <script>
+    let isScrolling = false;
+    let scrollTimeout;
+    let scrollStartX = 0;
+    let scrollStartY = 0;
+
+    function logInputEvent(event) {
+      const eventType = event.type;
+      let xCoord, yCoord, buttonInfo, keyInfo, scrollInfo;
+
+      // For mouse events, capture coordinates and button information
+      if (event.clientX && event.clientY) {
+        xCoord = event.clientX;
+        yCoord = event.clientY;
+      }
+      if (event.button !== undefined) {
+        const button = event.button;
+        switch (button) {
+          case 0:
+            buttonInfo = 'Left Mouse Button';
+            break;
+          case 1:
+            buttonInfo = 'Middle Mouse Button';
+            break;
+          case 2:
+            buttonInfo = 'Right Mouse Button';
+            break;
+          case 3:
+            buttonInfo = 'Mouse Button 3';
+            break;
+          case 4:
+            buttonInfo = 'Mouse Button 4';
+            break;
+          case 5:
+            buttonInfo = 'Mouse Button 5';
+            break;
+          default:
+            buttonInfo = `Mouse Button ${button}`;
+        }
+      }
+
+      // For keyboard events, capture the pressed key's character
+      if (eventType.startsWith('key')) {
+        keyInfo = `Key: ${event.key}`;
+      }
+
+      // For scroll events, capture scrolling direction and start/stop events
+      if (eventType === 'scroll') {
+        const scrollX = window.scrollX;
+        const scrollY = window.scrollY;
+
+        if (!isScrolling) {
+          scrollStartX = scrollX;
+          scrollStartY = scrollY;
+          isScrolling = true;
+          scrollInfo = `Scroll Started - X: ${scrollX}, Y: ${scrollY}`;
+        } else {
+          const directionX = scrollX > scrollStartX ? 'right' : 'left';
+          if (scrollX == scrollStartX){directionX == ''}
+          const directionY = scrollY > scrollStartY ? 'down' : 'up';
+          const diffX = Math.abs(scrollX - scrollStartX);
+          const diffY = Math.abs(scrollY - scrollStartY);
+          scrollInfo = `Scrolling - X: ${scrollX}, Y: ${scrollY} - Direction: ${directionX}/${directionY} - Distance: ${diffX}/${diffY}`;
+        }
+
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(logScrollEnd, 200); // Adjust the timeout value (in milliseconds) as needed
+      }
+
+      // For mouseover and mouseout events, capture the target element information
+      let targetInfo = '';
+      if (eventType === 'mouseover' || eventType === 'mouseout') {
+        const target = event.target.tagName;
+        const relatedTarget = event.relatedTarget ? event.relatedTarget.tagName : '';
+        targetInfo = `Target: ${target} - Related Target: ${relatedTarget}`;
+      }
+
+      const eventLog = document.getElementById('eventLog');
+      eventLog.innerHTML += `<strong>${eventType}</strong> ${xCoord ? `at (${xCoord}, ${yCoord})` : ''} ${buttonInfo ? `- ${buttonInfo}` : ''} ${keyInfo ? `- ${keyInfo}` : ''} ${scrollInfo ? `- ${scrollInfo}` : ''} ${targetInfo ? `- ${targetInfo}` : ''}<br>`;
+    }
+
+    function logScrollEnd() {
+      isScrolling = false;
+    }
+
+    // Add event listeners for mouse events
+    document.addEventListener('click', logInputEvent);
+    document.addEventListener('dblclick', logInputEvent);
+    document.addEventListener('contextmenu', logInputEvent); // Right-click event
+    document.addEventListener('auxclick', logInputEvent); // Rare mouse button input
+    document.addEventListener('mousedown', logInputEvent); // Mouse buttons 0-5
+
+    // Add event listeners for keyboard events
+    document.addEventListener('keydown', logInputEvent);
+    document.addEventListener('keyup', logInputEvent);
+    document.addEventListener('keypress', logInputEvent);
+
+    // Add event listeners for other input events
+    document.addEventListener('focus', logInputEvent);
+    document.addEventListener('blur', logInputEvent);
+    document.addEventListener('input', logInputEvent);
+    document.addEventListener('change', logInputEvent);
+    document.addEventListener('submit', logInputEvent);
+    document.addEventListener('reset', logInputEvent);
+
+    // Add event listeners for scroll events
+    window.addEventListener('scroll', logInputEvent);
+
+  </script>
+</body>
+</html>
