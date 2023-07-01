@@ -9,144 +9,35 @@
 
 <head>
 
-    <meta name="viewport" content="transparent-background">
-    <link rel="manifest" href="/manifest.json">
-    <!--  Imports:
-        - aFrame for AR??
-        - jQuery for ebook managment and animations -->
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/magicleap-controls"></script>
 
-    <!--  Books:
-        - Script to import books as .book  -->
+    <meta name="viewport" content="transparent-background">
+
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="manifest" href="/manifest.json">
+
+    <script src="animations.js" type="text/javascript"></script>
+
+
+    <!--  Books: Script to import books as .book  -->
     <script>
         $(function () {
-            //$(".book").load("/FrankHTML.html"); // Frankenstein
-            $(".book").load("/KafkaHTML.html"); // Metamorphasis  
+            $(".book").load("/FrankHTML.html"); // Frankenstein
+            //$(".book").load("/KafkaHTML.html"); // Metamorphasis  
             //$(".book").load("/DorianHTML.html"); // A Picture of Dorian Gray
             //$(".book").load("/BorderHTML.html"); // Borderland
         });
     </script>
-
-    <!--  Animations:
-        - Scolling on keypress
-        - Will add MAGICLEAP controller swipes  -->
-    <script>
-$(document).ready(function () {
-            var smallScrollAmount = 1;      // Number of lines to scroll for small movements
-            var bigScrollAmount = 4;       // Number of lines to scroll for big jumps
-            var lineHeight = 24;            // Height of each line in pixels
-            var animationDuration = 800;    // Duration of the animation in milliseconds (for small movements)
-
-            $(document).on('keydown', function (event) {
-
-                // Small scroll backward
-                if (event.key === 'ArrowUp') {
-                    var currentPosition = $('.book').scrollTop();
-                    var newPosition = currentPosition - smallScrollAmount * lineHeight;
-                    $('.book').scrollTop(newPosition);
-                    event.preventDefault();
-
-                    // Small scroll foreward
-                } else if (event.key === 'ArrowDown') {
-                    var currentPosition = $('.book').scrollTop();
-                    var newPosition = currentPosition + smallScrollAmount * lineHeight;
-                    $('.book').scrollTop(newPosition);
-                    event.preventDefault();
-
-                    // Big scroll backward
-                } else if (event.key === 'ArrowLeft') {
-                    var currentPosition = $('.book').scrollTop();
-                    var newPosition = currentPosition - $('.book').height() + bigScrollAmount * lineHeight;
-                    $('.book').animate({ scrollTop: newPosition }, animationDuration); // smooth scroll for big moves
-                    event.preventDefault();
-
-                    // Big Scroll foreward 
-                } else if (event.key === 'ArrowRight') {
-                    var currentPosition = $('.book').scrollTop();
-                    var newPosition = currentPosition + $('.book').height() - bigScrollAmount * lineHeight;
-                    $('.book').animate({ scrollTop: newPosition }, animationDuration);
-                    event.preventDefault();
-                }
-
-                // Scroll Percentage Calculator (for display?)
-                var totalHeight = $('.book')[0].scrollHeight - $('.book').height();
-                var scrollPercentage = (newPosition / totalHeight) * 100;
-                var perc = ('Scroll Percentage:', Math.max(0.00, scrollPercentage).toFixed(2));
-                document.getElementById('disp').innerHTML = perc;
-
-            });
-        });
-    </script>
 </head>
 
-<style>
-    /* @import url('https://fonts.googleapis.com/css2?family=Bacasime+Antique&display=swap'); */
-    body {
-        background-color: rgba(0, 0, 0, 100);
-    }
-
-    #Window {
-        /* window */
-        height: 100%;
-        display: flex;
-        overflow: hidden;
-        background-color: rgba(0, 0, 0, 150);
-    }
-
-    #Canvas {
-        /* Book Window */
-        width: 80%;
-        height: 80%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        background-color:aliceblue;
-        display: flex;
-        overflow: auto;
-    }
-
-    .book {
-        /* Book Content */
-        margin: 1em;
-        overflow-y: scroll;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-        /*  font-family: 'Bacasime Antique', serif; */
-        font-size: x-large;
-
-        .chapter p {
-            line-height: 1em;
-            margin-bottom: 1em;
-            /* between paragraphs */
-        }
-    }
-
-    .book::-webkit-scrollbar {
-        display: none;
-    }
-
-
-    .status {
-        position: fixed;
-        left: 50%;
-        bottom: -10px;
-        transform: translate(-50%, -50%);
-        margin: 0 auto;
-        color: white;
-    }
-</style>
 </head>
 
 <body>
     <div id="Window">
         <div id="Canvas">
-            <div class="book"></div>
-        </div>
-        <div class="status">
-            <h3>Complete: <span id="disp">0.00</span>%</h3>
+            <div class="book">
+            </div>
         </div>
     </div>
 </body>

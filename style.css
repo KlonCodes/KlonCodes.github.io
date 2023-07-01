@@ -1,0 +1,56 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Bacasime+Antique&display=swap'); */
+body {
+    background-color: rgba(0, 0, 0, 100);
+}
+
+#Window {
+    /* window */
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 150);
+}
+
+#Canvas {
+    /* Book Window */
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: aliceblue;
+    display: flex;
+    overflow: auto;
+}
+
+.book {
+    /* Book Content */
+    margin: 1em;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    /*  font-family: 'Bacasime Antique', serif; */
+    font-size: x-large;
+
+    .chapter p {
+        line-height: 1em;
+        margin-bottom: 1em;
+        /* between paragraphs */
+    }
+}
+
+.book::-webkit-scrollbar {
+    display: none;
+}
+
+
+.status {
+    position: fixed;
+    left: 50%;
+    bottom: -10px;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    color: white;
+}
