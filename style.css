@@ -2,6 +2,10 @@
 
 body {
     background-color: rgba(0, 0, 0, 100);
+    /* background-image: url("/ExtraImages/room.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover; */
 }
 
 #Window {
@@ -21,7 +25,8 @@ body {
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    background-color: aliceblue;
+    background-color:white; 
+    opacity:100%;
     display: flex;
     overflow: auto;
 }
@@ -34,6 +39,12 @@ body {
     scrollbar-width: none;
     /*  font-family: 'Bacasime Antique', serif; */
     font-size: x-large;
+    /*  color: black;
+    text-shadow:
+    -1px -1px 0 #eee,
+    1px -1px 0 #eee,
+    -1px 1px 0 #eee,
+    1px 1px 0 #eee;  */
 
     .chapter p {
         line-height: 1em;
@@ -46,16 +57,6 @@ body {
     display: none;
 }
 
-
-.status {
-    position: fixed;
-    left: 50%;
-    bottom: -10px;
-    transform: translate(-50%, -50%);
-    margin: 0 auto;
-    color: white;
-}
-
 .splash-screen {
     background-color: rgba(0, 0, 0, 150);
     color: aliceblue;
@@ -65,6 +66,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+
 }
 
 /* Style for the title "AReader Library" */
@@ -100,7 +102,7 @@ body {
 
     .book-option {
         flex: 0 0 50%;
-        margin: 00px;
+        margin: 10px;
     }
 }
 
@@ -111,7 +113,7 @@ body {
 
 /* Adjust image size within the book options */
 .book-option img {
-    max-width: 22em;
+    max-width: 20em;
     height: auto;
-    border-radius: 0px;
+    border-radius: 10px;
 }
