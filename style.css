@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
 
 body {
-    background-color: rgba(0, 0, 0, 100);
-    /* background-image: url("/ExtraImages/room.jpg");
+    /*background-color: rgba(0, 0, 0, 100);*/
+    background-image: url("/ExtraImages/room.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover; */
+    background-size: cover;
 }
 
 #Window {
@@ -25,7 +25,7 @@ body {
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    background-color:white; 
+    background-color:black; 
     opacity:100%;
     display: flex;
     overflow: auto;
@@ -39,8 +39,8 @@ body {
     scrollbar-width: none;
     /*  font-family: 'Bacasime Antique', serif; */
     font-size: x-large;
-    /*  color: black;
-    text-shadow:
+    color: whitesmoke;
+    /*text-shadow:
     -1px -1px 0 #eee,
     1px -1px 0 #eee,
     -1px 1px 0 #eee,
