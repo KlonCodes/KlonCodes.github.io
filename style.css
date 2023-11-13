@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 
 body {
     /*background-color: rgba(0, 0, 0, 100);*/
@@ -29,7 +29,7 @@ body {
     opacity:80%;
     display: flex;
     overflow: auto;
-    border-radius: 25px;
+    border-radius: 20px;
 }
 
 .book {
@@ -61,13 +61,11 @@ body {
 .splash-screen {
     background-color: rgba(0, 0, 0, 150);
     color: aliceblue;
+    margin: 2%;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-
 }
 
 /* Style for the title "AReader Library" */
@@ -75,8 +73,14 @@ body {
     text-align: center;
     font-size: 36px;
     font-weight: bold;
-    margin-bottom: 30px;
-    font-family: 'Pirata One', cursive;
+    margin-bottom: 1.8%;
+    margin-top: 2%;
+    font-family: 'Archivo Black', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    
 }
 
 /* Style for the book options */
@@ -85,16 +89,21 @@ body {
     flex-wrap: wrap;
     justify-content: center;
 }
+.book-option img{
+    height: 80%;
+}
 
 /* Style for individual book options */
 .book-option {
-    margin: 10px;
+    margin: 2%;
     cursor: pointer;
     transition: transform 0.4s ease;
+    height: 18%;
 }
 
+
 /* Ensure book options wrap into 2x2 when screen size is smaller */
-@media (max-width: 800px) {
+@media (max-width: 80%) {
     .ssOptions {
         flex-direction: row;
         justify-content: flex-start;
@@ -102,19 +111,20 @@ body {
     }
 
     .book-option {
-        flex: 0 0 50%;
+        flex: 0 0 21%;
         margin: 10px;
     }
 }
 
 /* Hover effect on book options with glow */
 .book-option:hover {
-    transform: scale(1.1);
+    transform: scale(1.15);
+    
 }
 
 /* Adjust image size within the book options */
 .book-option img {
-    max-width: 20em;
+    max-width: 18em;
     height: auto;
     border-radius: 10px;
 }
