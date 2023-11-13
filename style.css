@@ -26,9 +26,10 @@ body {
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     background-color:black; 
-    opacity:100%;
+    opacity:80%;
     display: flex;
     overflow: auto;
+    border-radius: 25px;
 }
 
 .book {
@@ -37,7 +38,7 @@ body {
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    /*  font-family: 'Bacasime Antique', serif; */
+    font-family: 'Bacasime Antique', serif;
     font-size: x-large;
     color: whitesmoke;
     /*text-shadow:
