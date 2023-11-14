@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 
 body {
-    /*background-color: rgba(0, 0, 0, 100);*/
-    background-image: url("/ExtraImages/room.jpg");
+    background-color: rgba(150, 150,150, 0);
+    /* background-image: url("/ExtraImages/room.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: cover; */
 }
 
 #Window {
@@ -13,7 +13,7 @@ body {
     height: 100%;
     display: flex;
     overflow: hidden;
-    background-color: rgba(0, 0, 0, 150);
+    background-color: rgba(0, 0, 150, 150);
 }
 
 #Canvas {
@@ -26,7 +26,7 @@ body {
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     background-color: black;
-    opacity: 80%;
+    opacity: 100%;
     display: flex;
     overflow: auto;
     border-radius: 20px;
