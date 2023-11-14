@@ -25,8 +25,8 @@ body {
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    background-color:black; 
-    opacity:80%;
+    background-color: black;
+    opacity: 80%;
     display: flex;
     overflow: auto;
     border-radius: 20px;
@@ -34,7 +34,9 @@ body {
 
 .book {
     /* Book Content */
-    margin: 1em;
+    margin-top: 1em;
+    margin-left: 2em;
+    margin-right: 2em;
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -76,21 +78,16 @@ body {
     margin-bottom: 1.8%;
     margin-top: 2%;
     font-family: 'Archivo Black', sans-serif;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
-    
+
 }
 
 /* Style for the book options */
 .ssOptions {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-}
-.book-option img{
-    height: 80%;
+    margin: 2em;
 }
 
 /* Style for individual book options */
@@ -99,6 +96,19 @@ body {
     cursor: pointer;
     transition: transform 0.4s ease;
     height: 18%;
+    flex: 1 0 21%;
+    
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-option-2 {
+    margin: 1%;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+    height: 6%;
 }
 
 
@@ -106,25 +116,52 @@ body {
 @media (max-width: 80%) {
     .ssOptions {
         flex-direction: row;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
     }
 
     .book-option {
-        flex: 0 0 21%;
+        flex: 0 0 26%;
         margin: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .book-option-2 {
+        flex: 0 0 26%;
+        margin: 10px;
+
     }
 }
 
 /* Hover effect on book options with glow */
 .book-option:hover {
     transform: scale(1.15);
-    
+
+}
+
+.book-option-2:hover {
+    transform: scale(1.15);
+
 }
 
 /* Adjust image size within the book options */
 .book-option img {
-    max-width: 18em;
+    display: block;
+    max-width: 15em;
     height: auto;
     border-radius: 10px;
+
+
+}
+
+.book-option-2 img {
+    max-width: 10em;
+    height: auto;
+    border-radius: 10px;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
 }

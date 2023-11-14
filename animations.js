@@ -72,13 +72,4 @@ $(document).ready(function () {
             event.preventDefault();
         }
     });
-
-    // Add double-click event listener for jumping to the next chapter
-    $('.book').on('dblclick', function (event) {
-        var nextChapter = $('.chapter').first().next('.chapter');
-        if (nextChapter.length > 0) {
-            var position = nextChapter.position().top;
-            $('.book').animate({ scrollTop: position }, animationDuration);
-        }
-    });
 });

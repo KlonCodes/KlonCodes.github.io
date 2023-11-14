@@ -47,6 +47,14 @@
                     loadBook(bookURL);
                 }
             });
+
+            // Handle book-2 selection when a user clicks on an option
+            $(".book-option-2").click(function () {
+                const bookURL = $(this).data("book-url");
+                if (bookURL) {
+                    loadBook(bookURL);
+                }
+            });
         });
     </script>
 </head>
@@ -67,8 +75,13 @@
             <div class="book-option" data-book-url="/KafkaHTML.html"><img src="/Covers/CMcap.png" alt="Crime & punishment"></div>
             <div class="book-option" data-book-url="/DorianHTML.html"><img src="/Covers/CMwar.png" alt="War of the Worlds"></div>
             <div class="book-option" data-book-url="/BorderHTML.html"><img src="/Covers/CMwf.png" alt="White Fang"></div>
+            <div class="break"></div>
             <!-- Test Texts -->
-            <div class="book-option" data-book-url="/TestPassages/Passage1.html"><img src="/Covers/RP/P1C.png" alt="Passage One"></div>
+            <div class="book-option-2" data-book-url="/TestPassages/Passage1.html"><img src="/Covers/RP/P1C.png" alt="Passage One"></div>
+            <div class="book-option-2" data-book-url="/TestPassages/Passage2.html"><img src="/Covers/RP/P1C.png" alt="Passage Two"></div>
+            <div class="book-option-2" data-book-url="/TestPassages/Passage3.html"><img src="/Covers/RP/P1C.png" alt="Passage Three"></div>
+            <div class="book-option-2" data-book-url="/TestPassages/Passage4.html"><img src="/Covers/RP/P1C.png" alt="Passage Four"></div>
+            <div class="book-option-2" data-book-url="/TestPassages/Passage5.html"><img src="/Covers/RP/P1C.png" alt="Passage Five"></div>
         </div>
     </div>
 
