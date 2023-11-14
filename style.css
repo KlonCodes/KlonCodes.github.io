@@ -35,6 +35,7 @@ body {
 .book {
     /* Book Content */
     margin-top: 1em;
+    margin-bottom: 1em;
     margin-left: 2em;
     margin-right: 2em;
     overflow-y: scroll;
@@ -43,16 +44,18 @@ body {
     font-family: 'Bacasime Antique', serif;
     font-size: x-large;
     color: whitesmoke;
+    
+    text-align: justify;
     /*text-shadow:
     -1px -1px 0 #eee,
     1px -1px 0 #eee,
     -1px 1px 0 #eee,
     1px 1px 0 #eee;  */
 
-    .chapter p {
-        line-height: 1em;
-        margin-bottom: 1em;
-        /* between paragraphs */
+    p {
+        line-height: 1.25em;
+        text-indent: 1.5em;
+        margin-bottom: 1.25em;
     }
 }
 
