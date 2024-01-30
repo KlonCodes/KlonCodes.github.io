@@ -3,7 +3,7 @@ src = "https://code.jquery.com/jquery-3.6.0.min.js"
 
 $(document).ready(function () {
     var smallScrollAmount = 1;      // Number of lines to scroll for small movements
-    var bigScrollAmount = 4;       // Number of lines to scroll for big jumps
+    var bigScrollAmount = 2;       // Number of lines to scroll for big jumps
     var lineHeight = 24;           // Height of each line in pixels
     var animationDuration = 800;   // Duration of the animation in milliseconds (for small movements)
     var isScrolling = false;
@@ -24,12 +24,22 @@ $(document).ready(function () {
                 lastScrollTime = currentTime;
 
                 // Trigger the corresponding action for arrow keys
+                //if (event.originalEvent.deltaX > 0) {
+                    // Scrolling to the right, trigger action for ArrowRight
+                //    $(document).trigger($.Event('keydown', { key: 'ArrowRight' }));
+                //} else {
+                    // Scrolling to the left, trigger action for ArrowLeft
+                //    $(document).trigger($.Event('keydown', { key: 'ArrowLeft' }));
+               // }
+                //UPDATE:
+                //adding WASD keys
+                // Trigger the corresponding action for WASD keys
                 if (event.originalEvent.deltaX > 0) {
                     // Scrolling to the right, trigger action for ArrowRight
-                    $(document).trigger($.Event('keydown', { key: 'ArrowRight' }));
+                    $(document).trigger($.Event('keydown', { key: 'd' }));
                 } else {
                     // Scrolling to the left, trigger action for ArrowLeft
-                    $(document).trigger($.Event('keydown', { key: 'ArrowLeft' }));
+                    $(document).trigger($.Event('keydown', { key: 'a' }));
                 }
 
                 setTimeout(function () {
@@ -66,6 +76,39 @@ $(document).ready(function () {
 
             // Big Scroll forward
         } else if (event.key === 'ArrowRight') {
+            var currentPosition = $('.book').scrollTop();
+            var newPosition = currentPosition + $('.book').height() - bigScrollAmount * lineHeight;
+            $('.book').animate({ scrollTop: newPosition }, animationDuration);
+            event.preventDefault();
+        }
+    });
+
+    //UPDATE:
+    //adding WASD keys
+    $(document).on('keydown', function (event) {
+        // Small scroll backward
+        if (event.key === 'w') {
+            var currentPosition = $('.book').scrollTop();
+            var newPosition = currentPosition - smallScrollAmount * lineHeight;
+            $('.book').scrollTop(newPosition);
+            event.preventDefault();
+
+            // Small scroll forward
+        } else if (event.key === 's') {
+            var currentPosition = $('.book').scrollTop();
+            var newPosition = currentPosition + smallScrollAmount * lineHeight;
+            $('.book').scrollTop(newPosition);
+            event.preventDefault();
+
+            // Big scroll backward
+        } else if (event.key === 'a') {
+            var currentPosition = $('.book').scrollTop();
+            var newPosition = currentPosition - $('.book').height() + bigScrollAmount * lineHeight;
+            $('.book').animate({ scrollTop: newPosition }, animationDuration); // smooth scroll for big moves
+            event.preventDefault();
+
+            // Big Scroll forward
+        } else if (event.key === 'd') {
             var currentPosition = $('.book').scrollTop();
             var newPosition = currentPosition + $('.book').height() - bigScrollAmount * lineHeight;
             $('.book').animate({ scrollTop: newPosition }, animationDuration);
