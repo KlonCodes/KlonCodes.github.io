@@ -4,21 +4,21 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     color: transparent;
-    background-color: transparent;
+    background-color: rgb(20, 20, 30);
 }
 #Window {
     /* window */
     height: 100%;
     display: flex;
     overflow: hidden;
-    background-color: rgba(20, 20, 20, 0.1);
+    background-color: rgba(120, 12, 120, 1);
     color: transparent;
 }
 
 #Canvas {
     /* Book Window */
-    width: 80%;
-    height: 80%;
+    width: 92%;
+    height: 88%;
     position: absolute;
     top: 50%;
     left: 50%;

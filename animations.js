@@ -23,14 +23,6 @@ $(document).ready(function () {
                 isScrolling = true;
                 lastScrollTime = currentTime;
 
-                // Trigger the corresponding action for arrow keys
-                //if (event.originalEvent.deltaX > 0) {
-                    // Scrolling to the right, trigger action for ArrowRight
-                //    $(document).trigger($.Event('keydown', { key: 'ArrowRight' }));
-                //} else {
-                    // Scrolling to the left, trigger action for ArrowLeft
-                //    $(document).trigger($.Event('keydown', { key: 'ArrowLeft' }));
-               // }
                 //UPDATE:
                 //adding WASD keys
                 // Trigger the corresponding action for WASD keys
