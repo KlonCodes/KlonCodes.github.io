@@ -6,6 +6,7 @@ body {
     color: transparent;
     background-color: rgb(20, 20, 30);
 }
+
 #Window {
     /* window */
     height: 100%;
@@ -43,7 +44,7 @@ body {
     font-family: 'Bacasime Antique', serif;
     font-size: x-large;
     color: whitesmoke;
-    
+
     text-align: justify;
     /*text-shadow:
     -1px -1px 0 #eee,
@@ -99,7 +100,7 @@ body {
     transition: transform 0.4s ease;
     height: 18%;
     flex: 1 0 21%;
-    
+
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -128,13 +129,34 @@ body {
         align-items: center;
         justify-content: center;
     }
-    
+
 }
 
 /* Hover effect on book options with glow */
 .book-option:hover {
     transform: scale(1.15);
+}
 
+.book-option:hover img {
+    -webkit-filter: blur(4px);
+    filter: blur(4px);
+    opacity: 0.25;
+}
+
+.book-option:hover::after {
+    content: attr(title);
+    font-family: 'Archivo Black', sans-serif;
+    position: absolute;
+    text-align: center;
+    width: 60%;
+    color: white;
+    font-size: 18px;
+    display: flex;
+
+}
+
+.book-option:hover::after {
+    opacity: 1;
 }
 
 .book-option-2:hover {
