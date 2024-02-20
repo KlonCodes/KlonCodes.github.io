@@ -23,8 +23,6 @@ $(document).ready(function () {
                 isScrolling = true;
                 lastScrollTime = currentTime;
 
-                //UPDATE:
-                //adding WASD keys
                 // Trigger the corresponding action for WASD keys
                 if (event.originalEvent.deltaX > 0) {
                     // Scrolling to the right, trigger action for ArrowRight
@@ -44,67 +42,51 @@ $(document).ready(function () {
         }
     });
 
-    $(document).on('keydown', function (event) {
-        // Small scroll backward
-        if (event.key === 'ArrowUp') {
+    $(document).ready(function() {
+        var isAnimating = false; // Flag to check animation status
+    
+        $(document).on('keydown', function(event) {
+            // If an animation is in progress, ignore the input
+            if (isAnimating) {
+                return;
+            }
+    
             var currentPosition = $('.book').scrollTop();
-            var newPosition = currentPosition - smallScrollAmount * lineHeight;
-            $('.book').scrollTop(newPosition);
-            event.preventDefault();
-
-            // Small scroll forward
-        } else if (event.key === 'ArrowDown') {
-            var currentPosition = $('.book').scrollTop();
-            var newPosition = currentPosition + smallScrollAmount * lineHeight;
-            $('.book').scrollTop(newPosition);
-            event.preventDefault();
-
-            // Big scroll backward
-        } else if (event.key === 'ArrowLeft') {
-            var currentPosition = $('.book').scrollTop();
-            var newPosition = currentPosition - $('.book').height() + bigScrollAmount * lineHeight;
-            $('.book').animate({ scrollTop: newPosition }, animationDuration); // smooth scroll for big moves
-            event.preventDefault();
-
-            // Big Scroll forward
-        } else if (event.key === 'ArrowRight') {
-            var currentPosition = $('.book').scrollTop();
-            var newPosition = currentPosition + $('.book').height() - bigScrollAmount * lineHeight;
-            $('.book').animate({ scrollTop: newPosition }, animationDuration);
-            event.preventDefault();
-        }
+            var newPosition;
+    
+            // Small scroll backward (W or ArrowUp)
+            if (event.key === 'w' || event.key === 'ArrowUp') {
+                newPosition = currentPosition - smallScrollAmount * lineHeight;
+                $('.book').scrollTop(newPosition);
+                event.preventDefault();
+            }
+            // Small scroll forward (S or ArrowDown)
+            else if (event.key === 's' || event.key === 'ArrowDown') {
+                newPosition = currentPosition + smallScrollAmount * lineHeight;
+                $('.book').scrollTop(newPosition);
+                event.preventDefault();
+            }
+            // Big scroll backward (A or ArrowLeft)
+            else if ((event.key === 'a' || event.key === 'ArrowLeft') && !isAnimating) {
+                newPosition = currentPosition - $('.book').height() + bigScrollAmount * lineHeight;
+                isAnimating = true;
+                $('.book').animate({ scrollTop: newPosition }, animationDuration, function() {
+                    isAnimating = false;
+                });
+                event.preventDefault();
+            }
+            // Big Scroll forward (D or ArrowRight)
+            else if ((event.key === 'd' || event.key === 'ArrowRight') && !isAnimating) {
+                newPosition = currentPosition + $('.book').height() - bigScrollAmount * lineHeight;
+                isAnimating = true;
+                $('.book').animate({ scrollTop: newPosition }, animationDuration, function() {
+                    isAnimating = false;
+                });
+                event.preventDefault();
+            }
+        });
     });
+    
 
-    //UPDATE:
-    //adding WASD keys
-    $(document).on('keydown', function (event) {
-        // Small scroll backward
-        if (event.key === 'w') {
-            var currentPosition = $('.book').scrollTop();
-            var newPosition = currentPosition - smallScrollAmount * lineHeight;
-            $('.book').scrollTop(newPosition);
-            event.preventDefault();
 
-            // Small scroll forward
-        } else if (event.key === 's') {
-            var currentPosition = $('.book').scrollTop();
-            var newPosition = currentPosition + smallScrollAmount * lineHeight;
-            $('.book').scrollTop(newPosition);
-            event.preventDefault();
-
-            // Big scroll backward
-        } else if (event.key === 'a') {
-            var currentPosition = $('.book').scrollTop();
-            var newPosition = currentPosition - $('.book').height() + bigScrollAmount * lineHeight;
-            $('.book').animate({ scrollTop: newPosition }, animationDuration); // smooth scroll for big moves
-            event.preventDefault();
-
-            // Big Scroll forward
-        } else if (event.key === 'd') {
-            var currentPosition = $('.book').scrollTop();
-            var newPosition = currentPosition + $('.book').height() - bigScrollAmount * lineHeight;
-            $('.book').animate({ scrollTop: newPosition }, animationDuration);
-            event.preventDefault();
-        }
-    });
 });
