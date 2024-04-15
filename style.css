@@ -4,7 +4,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     color: transparent;
-    background-color: rgba(20, 20, 30, 0);
+    background-color: rgb(20, 20, 30);
 }
 
 #Window {
@@ -12,7 +12,7 @@ body {
     height: 100%;
     display: flex;
     overflow: hidden;
-    background-color: rgba(120, 12, 120, 0);
+    background-color: rgba(120, 12, 120, 1);
     color: transparent;
 }
 
@@ -64,7 +64,7 @@ body {
 }
 
 .splash-screen {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 150);
     color: aliceblue;
     margin: 2%;
     border-radius: 20px;
