@@ -4,7 +4,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     color: transparent;
-    background-color: rgb(75, 80, 78);
+    background-color: rgb(25, 30, 28);
 }
 
 #Window {
@@ -25,7 +25,7 @@ body {
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    background-color: rgb(75, 80, 78);
+    background-color: rgb(45, 50, 48);
     opacity: 100%;
     display: flex;
     overflow: auto;
